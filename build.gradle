@@ -4,9 +4,11 @@ apply plugin: 'eclipse'
 sourceCompatibility = 1.5
 version = '1.0'
 jar {
+	from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     manifest {
         attributes 'Implementation-Title': 'Gradle Quickstart',
-                   'Implementation-Version': version
+                   'Implementation-Version': version,
+                   'Main-Class' : 'com.dongba.afreeca.AfreecaRatingServer'
     }
 }
 
